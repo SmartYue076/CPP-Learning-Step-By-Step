@@ -17,7 +17,11 @@ extern const int bufSize;
 
 ### const的引用
 
-const型变量只能由const型引用
+用于声明引用的const都是底层const
+
+const型变量只能由const型引用（底层const）
+
+不能把普通引用绑定到字面值上，需用底层const
 
 非const型变量可以由const型引用，但不可通过引用修改被引用变量值
 
@@ -31,7 +35,9 @@ r = 1; //invalid
 
 ### 指针和常量
 
-若变量为const，则它的指针或应用必为const
+若变量为const，则它的指针或引用必为const
+
+要想存放常量对象的地址，只能使用指向常量的指针（底层const）
 
 指向常量的指针（pointer to const）不能通过指针改变常量值 —— 底层const
 
@@ -64,6 +70,3 @@ const int *const p = &i;
 当执行对象的拷贝操作时，顶层const不受影响
 
 底层const要求拷入和拷出的对象必须具有相同的底层const资格，或者两个对象能相互转换。非常量可以转化为常量（等号右侧表达式），反之不行
-
-
-
