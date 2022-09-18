@@ -1,52 +1,48 @@
+// 904. get longest sub_string which has at most two type
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <set>
+#include <unordered_map>
 using namespace std;
-
-int get_value_in_vec(vector<int> &vec, int target)
-{
-    for (int i = 0; i < vec.size(); i++)
-    {
-        if (vec[i] == target)
-        {
-            return i;
-        }
-    }
-    return -1;
-}
 
 int totalFruit(vector<int> &fruits)
 {
-    int first_type = -1;
-    int second_type = -1;
-    int result = INT32_MAX;
+    unordered_map<int, int> fruit_num;
     int left = 0;
     int right = 0;
-    vector<int> type;
-    while (right < fruits.size())
+    int type_count = 0;
+    int result = 0;
+    for (; right < fruits.size(); right++)
     {
-        if (get_value_in_vec(type, fruits[right]) == -1)
+        int push_type = fruits[right];
+        if (fruit_num[push_type] == 0)
         {
-            if (type.size() == 2)
-            {
-                type.erase(type.begin());
-            }
-            type.push_back(fruits[right]);
+            type_count++;
         }
-        result = min(result, right - left + 1);
-        right++;
+        fruit_num[push_type]++;
+
+        while (type_count > 2)
+        {
+            int pop_type = fruits[left];
+            fruit_num[pop_type]--;
+            left++;
+            if (fruit_num[pop_type] == 0)
+            {
+                type_count--;
+                break;
+            }
+        }
+        result = result > right - left + 1 ? result : right - left + 1;
     }
+    return result;
 }
 
-// int main()
-// {
-//     const int seq_size = 6;
-//     int elem_vals[] = {2, 3, 1, 2, 4, 3};
+int main()
+{
+    const int seq_size = 5;
+    int elem_vals[] = {1, 2, 3, 2, 2};
 
-//     vector<int> nums(elem_vals, elem_vals + seq_size);
-//     int target = 7;
+    vector<int> nums(elem_vals, elem_vals + seq_size);
 
-//     int result = minSubArrayLen(target, nums);
-//     cout << result << endl;
-// }
+    int result = totalFruit(nums);
+    cout << result << endl;
+}

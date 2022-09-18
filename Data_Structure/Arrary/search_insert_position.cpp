@@ -1,3 +1,9 @@
+// 35. Search Insert Position
+// Given a sorted array of distinct integers and a target value, return the index if the target is found. 
+// If not, return the index where it would be if it were inserted in order.
+// You must write an algorithm with O(log n) runtime complexity.
+
+// *** The position to insert is (high + 1) ***
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -24,7 +30,7 @@ int searchInsert(vector<int> &nums, int target)
             high = mid - 1;
         }
     }
-    return mid;
+    return high + 1;
 }
 
 int main()
@@ -33,7 +39,7 @@ int main()
     int elem_vals[] = {-1, 0, 3, 5, 9, 12};
 
     vector<int> nums(elem_vals, elem_vals + seq_size);
-    int target = 10;
+    int target = 2;
 
     cout << searchInsert(nums, target);
 }

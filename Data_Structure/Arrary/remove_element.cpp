@@ -2,37 +2,37 @@
 #include <vector>
 using namespace std;
 
-// two pointer, change relative position
+// two pointer, not change relative position
 int removeElement(vector<int> &nums, int val)
 {
+    int max_index = nums.size() - 1;
     int left = 0;
-    int right = nums.size() - 1;
-    while (left <= right)
+    int right = 0;
+    for (; right <= max_index; right++)
     {
-        if (nums[left] == val)
+        if (nums[right] != val)
         {
             nums[left] = nums[right];
-            right--;
-        }
-        else
-        {
             left++;
         }
     }
     return left;
 }
 
-// two pointer, not change relative position
+// two pointer, change relative position
 // int removeElement(vector<int> &nums, int val)
 // {
-//     int max_index = nums.size() - 1;
 //     int left = 0;
-//     int right = 0;
-//     for (; right <= max_index; right++)
+//     int right = nums.size() - 1;
+//     while (left <= right)
 //     {
-//         if (nums[right] != val)
+//         if (nums[left] == val)
 //         {
 //             nums[left] = nums[right];
+//             right--;
+//         }
+//         else
+//         {
 //             left++;
 //         }
 //     }
@@ -59,14 +59,14 @@ int removeElement(vector<int> &nums, int val)
 
 int main()
 {
-    const int seq_size = 8;
-    int elem_vals[] = {0, 1, 2, 2, 3, 0, 4, 2};
+    const int seq_size = 4;
+    int elem_vals[] = {3, 2, 2, 3};
 
     vector<int> nums(elem_vals, elem_vals + seq_size);
-    int target = 2;
+    int target = 3;
 
     cout << removeElement(nums, target) << endl;
-    for (int j = 0; j <= 8; j++)
+    for (int j = 0; j <= seq_size - 1; j++)
     {
         cout << nums[j] << " ";
     }
