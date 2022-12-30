@@ -34,3 +34,5 @@
 # etc
 .vscode
 test.cpp
+*/Test
+.DS_Store
