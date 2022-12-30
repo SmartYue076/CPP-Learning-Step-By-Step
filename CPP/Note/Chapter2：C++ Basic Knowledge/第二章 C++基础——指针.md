@@ -15,7 +15,7 @@ double* ptr_b;
 初始化时必须指定所指元素类型，因为对所有指针来说其都是代表一个初始地址，但从该初始地址读多少字节则由指针类型判断
 
 指针也是作为变量存储，只不过其内存空间存的是地址。指针p1,p2有各自的地址&p1,&p2。长度为4B（32位）或8B（64位）。p1,p2表示存储的所指向元素的地址。*p1表示指向元素的值。
-<img src="..\img\1.PNG" alt="image.png" style="zoom:30%;" />
+<img src="..\..\..\img\1.PNG" alt="image.png" style="zoom:30%;" />
 
 
 
@@ -124,3 +124,26 @@ delete [] psome;
 `int *&r = p`
 
 表示r首先是对p的引用，其次r是一个int*型的引用
+
+
+
+### 引用
+
+ 定义时必须初始化
+
+不能改变绑定的指向（内部通过顶层const实现，type * const p）
+
+```C++
+int a = 1;
+int &b = a; //(pointer to b) equal to (pointer to a)
+```
+
+引用间不能赋值
+
+没有引用的引用，没有指针的引用，可以有引用的指针
+
+```C++
+int &* p; //illegal
+void f(int *& p); //ok
+```
+

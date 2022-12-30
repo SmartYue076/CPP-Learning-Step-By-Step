@@ -2,24 +2,42 @@
 #include <vector>
 using namespace std;
 
-// two pointer, not change relative position
 int removeElement(vector<int> &nums, int val)
 {
-    int max_index = nums.size() - 1;
-    int left = 0;
-    int right = 0;
-    for (; right <= max_index; right++)
+    int count = 0;
+    int size = nums.size();
+    for (int i = 0; i < size; i++)
     {
-        if (nums[right] != val)
+        if (nums[i] == val)
         {
-            nums[left] = nums[right];
-            left++;
+            ++count;
+        }
+        else
+        {
+            nums[i - count] = nums[i];
         }
     }
-    return left;
+    return size - count;
 }
 
-// two pointer, change relative position
+// // two pointer, not change relative position
+// int removeElement(vector<int> &nums, int val)
+// {
+//     int max_index = nums.size() - 1;
+//     int left = 0; // find index need update(may update not need element)
+//     int right = 0; //prepare to overwrite
+//     for (; right <= max_index; right++)
+//     {
+//         if (nums[right] != val)
+//         {
+//             nums[left] = nums[right];
+//             left++;
+//         }
+//     }
+//     return left;
+// }
+
+// // two pointer, change relative position
 // int removeElement(vector<int> &nums, int val)
 // {
 //     int left = 0;

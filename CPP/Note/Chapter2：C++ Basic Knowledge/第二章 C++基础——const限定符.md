@@ -17,7 +17,7 @@ extern const int bufSize;
 
 ### const的引用
 
-用于声明引用的const都是底层const
+用于声明引用的const都是底层const，引用本身已默认为顶层const（无法改变指向）
 
 const型变量只能由const型引用（底层const）
 
@@ -43,7 +43,7 @@ r = 1; //invalid
 
 ```C++
 int i = 0;
-const int *p = &i;
+const int *p = &i; // eqal to (int const *p =&i;)
 *p = 1; //invalid
 ```
 
@@ -62,6 +62,14 @@ p = &j;	//invalid
 int i = 0;
 const int *const p = &i;
 ```
+
+
+
+类和const
+
+函数后加const表示不修改任何成员变量（通过const *this实现 ）
+
+如果类包含const变量，必须通过初始化列表初始化
 
 
 
