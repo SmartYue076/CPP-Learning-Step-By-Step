@@ -36,3 +36,4 @@
 test.cpp
 */Test
 .DS_Store
+*.dSYM
