@@ -12,6 +12,18 @@
 
 <img src="..\..\..\img\stl.PNG" alt="stl.png" style="zoom:60%;" />
 
+### Array
+
+#### 定长数组
+
+_M_instance：指向数组首元素的指针（int a[10]的a）
+
+<img src="..\..\..\img\array_overview.png" alt="array_overview.png" style="zoom:60%;" />
+
+**iterator为指针，traits通过指针特化处理**
+
+<img src="..\..\..\img\array.png" alt="array.png" style="zoom:60%;" />
+
 ### Vector
 
 #### 变长数组
@@ -38,7 +50,7 @@ node（4B）：指向头节点的指针
 
 <img src="..\..\..\img\list_overview.png" alt="list_overview.png" style="zoom:60%;" />
 
-**iterator为指向当前节点的指针**
+**iterator里的node为指向当前节点的指针**
 
 <img src="..\..\..\img\list_iterator.png" alt="list_iterator.png" style="zoom:60%;" />
 
@@ -47,16 +59,6 @@ node（4B）：指向头节点的指针
 #### 单向链表
 
 <img src="..\..\..\img\forward_list.png" alt="forward_list.png" style="zoom:60%;" />
-
-### Array
-
-#### 定长数组
-
-_M_instance：指向数组首元素的指针（int a[10]的a）
-
-<img src="..\..\..\img\array_overview.png" alt="array_overview.png" style="zoom:60%;" />
-
-<img src="..\..\..\img\array.png" alt="array.png" style="zoom:60%;" />
 
 ### Queue
 
@@ -137,6 +139,8 @@ t：红黑树
 | std::unordered_map | 哈希表   | key无序  | key不可重复      | key不可修改  | O(1)     | O(1)     |
 
 std::unordered_map 底层实现为哈希表，std::map 和std::multimap 的底层实现是红黑树。同理，std::map 和std::multimap 的key也是有序的
+
+### Functors
 
 
 

@@ -187,6 +187,18 @@ void print_stack(stack<TreeNode *> st)
     cout << endl;
 }
 
+void print_queue(queue<TreeNode *> q)
+{
+    queue<TreeNode *> c_st(q);
+    while (!c_st.empty())
+    {
+        TreeNode *ele = c_st.front();
+        cout << ele->val << " ";
+        c_st.pop();
+    }
+    cout << endl;
+}
+
 // int main()
 // {
 //     TreeNode *node3 = new TreeNode(3);

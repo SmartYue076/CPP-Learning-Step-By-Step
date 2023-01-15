@@ -5,32 +5,58 @@
 #include "basic_binary_tree.h"
 using namespace std;
 
-// iteration
+// recursion
+bool isSame(TreeNode *nleft, TreeNode *nright)
+{
+    if (nleft == NULL && nright != NULL)
+        return false;
+    else if (nleft != NULL && nright == NULL)
+        return false;
+    else if (nleft == NULL && nright == NULL)
+        return true;
+    else if (nleft->val != nright->val)
+        return false;
+    // else left->val == and right == val and both not nullptr
+
+    bool outside = isSame(nleft->left, nright->right);
+    bool inside = isSame(nleft->right, nright->left);
+    return outside && inside;
+}
+
 bool isSymmetric(TreeNode *root)
 {
     if (root == nullptr)
         return true;
-    queue<TreeNode *> q; // may different level in q, not mind, just to compare pair of two
-    q.push(root->left);
-    q.push(root->right);
-    while (!q.empty())
-    {
-        TreeNode *nleft = q.front();
-        q.pop();
-        TreeNode *nright = q.front();
-        q.pop();
-        if (nleft == nullptr && nright == nullptr)
-            continue;
-        if (nleft == nullptr || nright == nullptr || nleft->val != nright->val)
-            return false;
-
-        q.push(nleft->left);
-        q.push(nright->right);
-        q.push(nleft->right);
-        q.push(nright->left);
-    }
-    return true;
+    else
+        return isSame(root->left, root->right);
 }
+
+// // iteration
+// bool isSymmetric(TreeNode *root)
+// {
+//     if (root == nullptr)
+//         return true;
+//     queue<TreeNode *> q; // may different level in q, not mind, just to compare pair of two
+//     q.push(root->left);
+//     q.push(root->right);
+//     while (!q.empty())
+//     {
+//         TreeNode *nleft = q.front();
+//         q.pop();
+//         TreeNode *nright = q.front();
+//         q.pop();
+//         if (nleft == nullptr && nright == nullptr)
+//             continue;
+//         if (nleft == nullptr || nright == nullptr || nleft->val != nright->val)
+//             return false;
+
+//         q.push(nleft->left);
+//         q.push(nright->right);
+//         q.push(nleft->right);
+//         q.push(nright->left);
+//     }
+//     return true;
+// }
 
 int main()
 {

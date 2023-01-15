@@ -17,6 +17,7 @@ struct TreeNode
 void print_vec(std::vector<int> &);
 void print_double_vec(std::vector<std::vector<int>> &vec);
 void print_stack(std::stack<TreeNode *>);
+void print_queue(std::queue<TreeNode *>);
 
 void pre_order_traversal(TreeNode *cur, std::vector<int> &vec);
 void in_order_traversal(TreeNode *cur, std::vector<int> &vec);
