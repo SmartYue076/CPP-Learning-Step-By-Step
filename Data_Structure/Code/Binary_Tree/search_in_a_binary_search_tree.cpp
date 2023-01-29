@@ -1,6 +1,4 @@
 #include <iostream>
-#include <queue>
-#include <algorithm>
 #include "basic_binary_tree.h"
 using namespace std;
 
