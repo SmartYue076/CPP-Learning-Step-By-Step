@@ -60,7 +60,7 @@ node（4B）：指向头节点的指针
 
 <img src="..\..\..\img\forward_list.png" alt="forward_list.png" style="zoom:60%;" />
 
-### Queue
+### Deque
 
 #### 双端队列
 
